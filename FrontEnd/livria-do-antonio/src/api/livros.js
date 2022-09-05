@@ -1,28 +1,28 @@
 import axios from "axios";
 export default class livrosApi {
   async buscarTodosOsLivros() {
-    const response = await axios.get("http://localhost:4000/livros");
+    const response = await axios.get("https://livraria-antonio.herokuapp.com/livros");
     return response.data;
   }
 
   async buscarLivro(id) {
-    const response = await axios.get(`http://localhost:4000/livros/${id}`);
+    const response = await axios.get(`https://livraria-antonio.herokuapp.com/livros${id}`);
     return response.data;
   }
 
   async adicionarLivro(livro) {
-    const response = await axios.post("http://localhost:4000/livros", livro);
+    const response = await axios.post("https://livraria-antonio.herokuapp.com/livros", livro);
     return response.data;
   }
 
   async excluirLivro(id) {
-    const response = await axios.delete(`http://localhost:4000/livros/${id}`);
+    const response = await axios.delete(`https://livraria-antonio.herokuapp.com/livros${id}`);
     return response.data;
   }
 
   async atualizarLivro(livro) {
     const response = await axios.put(
-      `http://localhost:4000/livros/${livro.id}`,
+      `https://livraria-antonio.herokuapp.com/livros${livro.id}`,
       livro
     );
     return response.data;

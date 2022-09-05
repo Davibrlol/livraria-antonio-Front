@@ -16,37 +16,37 @@ export default {
     await this.BuscarTodasAsCategorias();
     await this.BuscarTodosOsAutores();
     const livros = await axios.get(
-      "http://localhost:4000/livros?expand=categoria&expand=editora&expand=autor"
+      "https://livraria-antonio.herokuapp.com/livros?expand=categoria&expand=editora&expand=autor"
     );
     this.livros = livros.data;
   },
   methods: {
     async BuscarTodasAsEditoras() {
-      const editoras = await axios.get("http://localhost:4000/editoras");
+      const editoras = await axios.get("https://livraria-antonio.herokuapp.com/editoras");
       this.editoras = editoras.data;
     },
     async BuscarTodasAsCategorias() {
-      const categorias = await axios.get("http://localhost:4000/categorias");
+      const categorias = await axios.get("https://livraria-antonio.herokuapp.com/categorias");
       this.categorias = categorias.data;
     },
     async BuscarTodosOsAutores() {
-      const autores = await axios.get("http://localhost:4000/autores");
+      const autores = await axios.get("https://livraria-antonio.herokuapp.com/autores");
       this.autores = autores.data;
     },
     async salvar() {
       const livro_criado = await axios.post(
-        "http://localhost:4000/livros",
+        "https://livraria-antonio.herokuapp.com/livros",
         this.livro
       );
       this.livros.push(livro_criado.data);
       this.livro = {};
       const livros = await axios.get(
-        "http://localhost:4000/livros?expand=categoria&expand=editora&expand=autor"
+        "https://livraria-antonio.herokuapp.com/livros?expand=categoria&expand=editora&expand=autor"
       );
       this.livros = livros.data;
     },
     async excluir(livro) {
-      await axios.delete(`http://localhost:4000/livros/${livro.id}`);
+      await axios.delete(`https://livraria-antonio.herokuapp.com/livros/${livro.id}`);
       const indice = this.livros.indexOf(livro);
       this.livros.splice(indice, 1);
     },
